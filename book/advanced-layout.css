@@ -1,0 +1,174 @@
+/* Shape-Outside Demo - Minimal CSS */
+
+@page {
+  size: 6in 9in;
+  margin: 0.5in;
+}
+
+body {
+  font-family: Georgia, serif;
+  font-size: 11pt;
+  line-height: 1.6;
+  color: #333;
+}
+
+h1 {
+  font-size: 24pt;
+  margin-bottom: 24pt;
+  color: #222;
+}
+
+h2 {
+  font-size: 14pt;
+  margin-bottom: 12pt;
+  color: #444;
+}
+
+.demo {
+  margin-bottom: 36pt;
+  overflow: hidden; /* clearfix */
+}
+
+/* ============================================
+   SHAPE-OUTSIDE EXAMPLES
+   ============================================ */
+
+/* 1. URL-based shape (uses image alpha channel) */
+.shape-url {
+  float: left;
+  width: 1.5in;
+  height: 2in;
+  margin-right: 12pt;
+  shape-outside: url('./img/stick-figure.png');
+  shape-image-threshold: 0.5;
+  shape-margin: 8pt;
+}
+
+/* 2. Circle shape */
+.shape-circle {
+  float: right;
+  width: 1.5in;
+  height: 1.5in;
+  margin-left: 12pt;
+  shape-outside: circle(50%);
+  shape-margin: 10pt;
+}
+
+/* 3. Polygon shape (diamond) */
+.shape-polygon {
+  float: right;
+  width: 1.5in;
+  height: 1.5in;
+  margin-left: 12pt;
+  shape-outside: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  shape-margin: 10pt;
+}
+
+/* 4. Border-box shape (uses border-radius) */
+.shape-borderbox {
+  float: left;
+  width: 1in;
+  height: 1.25in;
+  margin-right: 12pt;
+  background: #0099cc;
+  border-radius: 0.5in;
+  shape-outside: border-box;
+  shape-margin: 8pt;
+}
+
+/* 5. Dual float layout */
+.dual-float {
+  min-height: 1.5in;
+}
+
+.shape-pill {
+  width: 0.75in;
+  height: 1.25in;
+  background: #0099cc;
+  border-radius: 0.375in;
+  shape-outside: border-box;
+  shape-margin: 8pt;
+}
+
+.float-left {
+  float: left;
+  margin-right: 12pt;
+}
+
+.float-right {
+  float: right;
+  margin-left: 12pt;
+}
+
+/* 6. Tight wrap - centered image with text on both sides
+
+   How it works:
+   - Two columns, each 3in wide (wider than half the container)
+   - Col2 has negative margin equal to image width, causing overlap
+   - Col1 has visible image floating right with shape-outside
+   - Col2 has invisible spacer floating left with matching shape-outside
+   - Text in each column flows around its respective float
+   - Result: centered image with text wrapping both sides
+*/
+.tight-wrap {
+  display: flex;
+  overflow: hidden;
+  position: relative;
+}
+
+.tight-wrap .col1,
+.tight-wrap .col2 {
+  flex: 0 0 3in;
+  overflow: hidden;
+  text-align: justify;
+  line-height: 1.5;
+}
+
+.tight-wrap .col2 {
+  margin-left: -1.5in; /* equals image width */
+}
+
+.tight-wrap .col1 .inner {
+  margin-right: 0.8in;
+}
+
+.tight-wrap .col2 .inner {
+  margin-left: 0.8in;
+  margin-right: 0.1in;
+}
+
+/* Spacer to push text down before the float */
+.tight-wrap .col1::before,
+.tight-wrap .col2::before {
+  content: "";
+  float: right;
+  width: 1px;
+  height: 0.5in;
+}
+
+.tight-wrap .col2::before {
+  float: left;
+}
+
+/* Visible image in col1 */
+.tight-wrap .col1 .img {
+  float: right;
+  clear: right;
+  width: 1.5in;
+  height: 1.5in;
+  border-radius: 50%;
+  shape-outside: circle(50%);
+  shape-margin: 0.05in;
+  margin: 0 0 0 0.05in;
+}
+
+/* Invisible spacer in col2 - mirrors the shape */
+.tight-wrap .col2 .img {
+  float: left;
+  clear: left;
+  width: 1.5in;
+  height: 1.5in;
+  shape-outside: circle(50%);
+  shape-margin: 0.05in;
+  margin: 0 0.05in 0 0;
+}

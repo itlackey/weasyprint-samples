@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Shape-Outside Demo</title>
+  <link rel="stylesheet" href="./advanced-layout.css">
+</head>
+
+<body>
+
+  <h1>Shape-Outside CSS Feature Demo</h1>
+
+  <!-- Example 1: shape-outside with image URL (alpha channel) -->
+  <section class="demo">
+    <h2>1. shape-outside: url()</h2>
+    <img src="./img/stick-figure.png" alt="Stick figure" class="shape-url">
+    <p>Text flows around the image's alpha channel. The shape-image-threshold controls which pixels define the boundary. This creates natural text wrapping around irregular shapes rather than rectangular bounding boxes.</p>
+  </section>
+
+  <!-- Example 2: shape-outside with circle() -->
+  <section class="demo">
+    <h2>2. shape-outside: circle()</h2>
+    <img src="./img/circle-shape.png" alt="Circle" class="shape-circle">
+    <p>The circle() function creates a circular text wrap area. Text flows smoothly around the curved boundary. Perfect for portraits, logos, or any circular imagery in your layouts.</p>
+  </section>
+
+  <!-- Example 3: shape-outside with polygon() -->
+  <section class="demo">
+    <h2>3. shape-outside: polygon()</h2>
+    <img src="./img/diamond-shape.png" alt="Diamond" class="shape-polygon">
+    <p>Polygon() defines custom vertices for any shape. This diamond uses four points: top, right, bottom, left. You can create any polygonal shape by specifying coordinate pairs.</p>
+  </section>
+
+  <!-- Example 4: shape-outside with border-box -->
+  <section class="demo">
+    <h2>4. shape-outside: border-box</h2>
+    <div class="shape-borderbox"></div>
+    <p>Border-box uses the element's border-box as the shape, including border-radius. This creates rounded shapes without images. Combined with border-radius, you get pill or rounded rectangle shapes.</p>
+  </section>
+
+  <!-- Example 5: Dual float layout -->
+  <section class="demo dual-float">
+    <h2>5. Dual Float Layout</h2>
+    <div class="shape-pill float-left"></div>
+    <div class="shape-pill float-right"></div>
+    <p>Text flows between two floated shapes simultaneously. This creates decorative margins or frames around content. Both elements use shape-outside: border-box with border-radius to create the pill shapes.</p>
+  </section>
+
+  <!-- Example 6: Tight wrap - centered image with text on both sides -->
+  <section class="demo">
+    <h2>6. Tight Wrap (Centered Image)</h2>
+    <div class="tight-wrap">
+      <div class="col1">
+        <img class="img" src="./img/circle-shape.png" alt="Centered circle">
+        <div class="inner">
+          This technique places a centered image with text flowing around both sides. The visible image floats right in column one with shape-outside: circle().
+        </div>
+      </div>
+      <div class="col2">
+        <div class="img"></div>
+        <div class="inner">
+          An invisible spacer in column two mirrors the shape. The columns overlap to create the centered effect. Perfect for hero images or featured content.
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+
+</html>

@@ -144,6 +144,36 @@ aside img {
   max-width: 14mm;
 }
 
+/* Shape-outside demo: text wraps around circular character portraits */
+.character-float-left {
+  float: left;
+  width: 22mm;
+  height: 22mm;
+  margin: 0.2em 1.2em 0.5em 0;
+  shape-outside: circle(50%);
+  shape-margin: 0.5em;
+  border-radius: 50%;
+  border: 0.5mm solid #888;
+  object-fit: cover;
+}
+
+.character-float-right {
+  float: right;
+  width: 22mm;
+  height: 22mm;
+  margin: 0.2em 0 0.5em 1.2em;
+  shape-outside: circle(50%);
+  shape-margin: 0.5em;
+  border-radius: 50%;
+  border: 0.5mm solid #888;
+  object-fit: cover;
+}
+
+/* Clearfix for sections with floated characters */
+.chapitre p {
+  clear: none;
+}
+
 #authors {
   padding-top: 10em;
   page: clean;
